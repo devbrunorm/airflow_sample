@@ -36,6 +36,17 @@ with DAG(
     catchup=False,
     tags=["example"],
 ) as dag:
+    """
+    # Documentação
+
+    Esse é um exemplo de documento que podemos colocar em uma DAG.
+
+    Essa DAG irá:
+    - Iniciar com um DummyOperator
+    - Executar o BashOperator para imprimir "ola, mundo"
+    - Executar o PythonOperator para imprimir "Hello, world!"
+    - Finalizar com um DummyOperator
+    """
     
     task_0 = DummyOperator(task_id = "start")
 
