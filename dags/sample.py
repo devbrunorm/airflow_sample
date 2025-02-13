@@ -1,3 +1,15 @@
+"""
+# Documentação
+
+Esse é um exemplo de documento que podemos colocar em uma DAG.
+
+Essa DAG irá:
+- Iniciar com um DummyOperator
+- Executar o BashOperator para imprimir "ola, mundo"
+- Executar o PythonOperator para imprimir "Hello, world!"
+- Finalizar com um DummyOperator
+"""
+
 from airflow.models.dag import DAG
 from airflow.operators.bash import BashOperator
 from airflow.operators.python import PythonOperator
@@ -36,18 +48,9 @@ with DAG(
     catchup=False,
     tags=["example"],
 ) as dag:
-    """
-    # Documentação
 
-    Esse é um exemplo de documento que podemos colocar em uma DAG.
+    dag.doc_md = __doc__
 
-    Essa DAG irá:
-    - Iniciar com um DummyOperator
-    - Executar o BashOperator para imprimir "ola, mundo"
-    - Executar o PythonOperator para imprimir "Hello, world!"
-    - Finalizar com um DummyOperator
-    """
-    
     task_0 = DummyOperator(task_id = "start")
 
     task_1 = BashOperator(
